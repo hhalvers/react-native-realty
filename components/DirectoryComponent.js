@@ -39,7 +39,7 @@ class Directory extends Component {
                     caption={item.price}
                     captionStyle={styles.captions}
                     featured
-                    onPress={() => navigate('CampsiteInfo', { campsiteId: item.id })}
+                    onPress={() => navigate('PropertyInfo', { campsiteId: item.id })}
                     imageSrc={{ uri: baseUrl + item.img }}
                     containerStyle={styles.container}
                 />

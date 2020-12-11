@@ -65,7 +65,7 @@ class Favorites extends Component {
                             title={item.address}
                             subtitle={item.description}
                             leftAvatar={{source: {uri: baseUrl + item.img}}}
-                            onPress={() => navigate('CampsiteInfo', {campsiteId: item.id})}
+                            onPress={() => navigate('PropertyInfo', {campsiteId: item.id})}
                         />
                     </View>
                 </SwipeRow>

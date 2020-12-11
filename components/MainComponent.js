@@ -4,7 +4,7 @@ import Directory from './DirectoryComponent';
 import Contact from './ContactComponent';
 import OurAgents from './OurAgents';
 import Favorites from './FavoritesComponent';
-import CampsiteInfo from './CampsiteInfoComponent';
+import PropertyInfo from './PropertyComponent';
 import { View, Platform, StyleSheet, Text, ScrollView, Image } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
@@ -82,7 +82,7 @@ const DirectoryNavigator = createStackNavigator(
                 />
             })
         },
-        CampsiteInfo: { screen: CampsiteInfo }
+        PropertyInfo: { screen: PropertyInfo }
     }, 
     {
         initialRouteName: 'Directory',

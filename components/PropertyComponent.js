@@ -130,7 +130,7 @@ const shareCampsite = (title, message, url) => {
 };
 
 
-class CampsiteInfo extends Component {
+class PropertyInfo extends Component {
     constructor(props) {
         super(props);
 
@@ -279,4 +279,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CampsiteInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(PropertyInfo);
