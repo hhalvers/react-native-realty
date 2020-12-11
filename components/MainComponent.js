@@ -90,7 +90,7 @@ const DirectoryNavigator = createStackNavigator(
             headerStyle: {
                 backgroundColor: '#FCCF98'
             },
-            headerTintColor: '#fff',
+            headerTintColor: 'black',
             headerTitleStyle: {
                 color: 'black'
             }
