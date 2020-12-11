@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Home from './HomeComponent';
 import Directory from './DirectoryComponent';
-import About from './AboutComponent';
-import Search from './SearchComponent';
 import Contact from './ContactComponent';
 import OurAgents from './OurAgents';
 import Favorites from './FavoritesComponent';
@@ -16,7 +14,7 @@ import SafeAreaView from 'react-native-safe-area-view';
 import { connect } from 'react-redux';
 import { fetchCampsites, fetchComments, fetchPromotions,
     fetchPartners, fetchProperties, fetchAgents } from '../redux/ActionCreators';
-import Reservation from './ReservationComponent';
+
 
 
 
