@@ -145,7 +145,7 @@ export const addPartners = partners => ({
 export const postFavorite = campsiteId => dispatch => {
     setTimeout(() => {
         dispatch(addFavorite(campsiteId));
-    }, 2000);
+    }, 1);
 };
 
 export const addFavorite = campsiteId => ({
@@ -181,4 +181,35 @@ export const propertiesFailed = errMess => ({
 export const addProperties = allProperties => ({
     type: ActionTypes.ADD_PROPERTIES,
     payload: allProperties
+});
+
+
+export const fetchAgents = () => dispatch => {
+    return fetch(baseUrl + 'ourAgents')
+        .then(response => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                const errMess = new Error(error.message);
+                throw errMess;
+            })
+        .then(response => response.json())
+        .then(ourAgents => dispatch(addAgents(ourAgents)))
+        .catch(error => dispatch(agentsFailed(error.message)));
+};
+
+export const agentsFailed = errMess => ({
+    type: ActionTypes.AGENTS_FAILED,
+    payload: errMess
+});
+
+export const addAgents = ourAgents => ({
+    type: ActionTypes.ADD_AGENTS,
+    payload: ourAgents
 });

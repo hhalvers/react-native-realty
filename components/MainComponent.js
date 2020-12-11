@@ -4,6 +4,8 @@ import Directory from './DirectoryComponent';
 import About from './AboutComponent';
 import Search from './SearchComponent';
 import Contact from './ContactComponent';
+import OurAgents from './OurAgents';
+import Favorites from './FavoritesComponent';
 import CampsiteInfo from './CampsiteInfoComponent';
 import { View, Platform, StyleSheet, Text, ScrollView, Image } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -13,7 +15,7 @@ import { Icon } from 'react-native-elements';
 import SafeAreaView from 'react-native-safe-area-view';
 import { connect } from 'react-redux';
 import { fetchCampsites, fetchComments, fetchPromotions,
-    fetchPartners, fetchProperties } from '../redux/ActionCreators';
+    fetchPartners, fetchProperties, fetchAgents } from '../redux/ActionCreators';
 import Reservation from './ReservationComponent';
 
 
@@ -23,24 +25,26 @@ const mapDispatchToProps = {
     fetchComments,
     fetchPromotions,
     fetchPartners,
-    fetchProperties
+    fetchProperties,
+    fetchAgents
 };
 
-const ReservationNavigator = createStackNavigator(
+
+const FavoritesNavigator = createStackNavigator(
     {
-        Reservation: { screen: Reservation }
+        Favorites: { screen: Favorites }
     },
     {
         defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#FCCF98'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                color: '#fff'
+                color: 'black'
             },
             headerLeft: <Icon
-                name='tree'
+                name='heart'
                 type='font-awesome'
                 iconStyle={styles.stackIcon}
                 onPress={() => navigation.toggleDrawer()}
@@ -86,11 +90,11 @@ const DirectoryNavigator = createStackNavigator(
         initialRouteName: 'Directory',
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#FCCF98'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                color: '#fff'
+                color: 'black'
             }
         }
     }
@@ -104,11 +108,11 @@ const HomeNavigator = createStackNavigator(
     {
         defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#FCCF98'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                color: '#fff'
+                color: 'black'
             },
             headerLeft: <Icon
                 name='home'
@@ -119,21 +123,21 @@ const HomeNavigator = createStackNavigator(
         })
     }
 );
-const SearchNavigator = createStackNavigator(
+const AgentNavigator = createStackNavigator(
     {
-        Home: { screen: Search }
+        Home: { screen: OurAgents }
     },
     {
         defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#FCCF98'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#black'
             },
             headerLeft: <Icon
-                name='search'
+                name='user'
                 type='font-awesome'
                 iconStyle={styles.stackIcon}
                 onPress={() => navigation.toggleDrawer()}
@@ -142,28 +146,7 @@ const SearchNavigator = createStackNavigator(
     }
 );
 
-const AboutNavigator = createStackNavigator(
-    {
-        About: { screen: About }
-    },
-    {
-        defaultNavigationOptions: ({navigation}) => ({
-            headerStyle: {
-                backgroundColor: '#5637DD'
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-                color: '#fff'
-            },
-            headerLeft: <Icon
-                name='info-circle'
-                type='font-awesome'
-                iconStyle={styles.stackIcon}
-                onPress={() => navigation.toggleDrawer()}
-            />
-        })
-    }
-);
+
 
 const ContactNavigator = createStackNavigator(
     {
@@ -172,11 +155,11 @@ const ContactNavigator = createStackNavigator(
     {
         defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#FCCF98'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                color: '#fff'
+                color: 'black'
             },
             headerLeft: <Icon
                 name='address-card'
@@ -193,6 +176,7 @@ const MainNavigator = createDrawerNavigator(
     {
         Home: {
             screen: HomeNavigator,
+            
             navigationOptions: {
                 drawerIcon: ({tintColor}) => (
                     <Icon
@@ -207,6 +191,7 @@ const MainNavigator = createDrawerNavigator(
         Directory: {
             screen: DirectoryNavigator,
             navigationOptions: {
+                drawerLabel: 'Properties',
                 drawerIcon: ({tintColor}) => (
                     <Icon
                         name='list'
@@ -217,12 +202,13 @@ const MainNavigator = createDrawerNavigator(
                 )
             }
         },
-        Search: {
-            screen: SearchNavigator,
+        OurAgents: {
+            screen: AgentNavigator,
+            drawerLabel: 'Our Agents',
             navigationOptions: {
                 drawerIcon: ({tintColor}) => (
                     <Icon
-                        name='search'
+                        name='user'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
@@ -230,34 +216,21 @@ const MainNavigator = createDrawerNavigator(
                 )
             }
         },
-        Reservation: {
-            screen: ReservationNavigator,
+      
+        Favorites: {
+            screen: FavoritesNavigator,
             navigationOptions: {
-                drawerLabel: 'Reserve Campsite',
+                drawerLabel: 'My Favorites',
                 drawerIcon: ({tintColor}) => (
                     <Icon
-                        name='tree'
+                        name='heart'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
                     />
                 )
             }
-        },        
-        About: {
-            screen: AboutNavigator,
-            navigationOptions: {
-                drawerLabel: 'About Us',
-                drawerIcon: ({tintColor}) => (
-                    <Icon
-                        name='info-circle'
-                        type='font-awesome'
-                        size={24}
-                        color={tintColor}
-                    />
-                )
-            }
-        },
+        },    
         Contact: {
             screen: ContactNavigator,
             navigationOptions: {
@@ -274,8 +247,8 @@ const MainNavigator = createDrawerNavigator(
         }
     },
     {
-        drawerBackgroundColor: '#CEC8FF',
-        contentComponent: CustomDrawerContentComponent
+        drawerBackgroundColor: '#FCCF98',
+        contentComponent: CustomDrawerContentComponent,
     }
 );
 
@@ -289,6 +262,7 @@ class Main extends Component {
         this.props.fetchPromotions();
         this.props.fetchPartners();
         this.props.fetchProperties();
+        this.props.fetchAgents();
     }
 
     render() {
@@ -309,7 +283,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     drawerHeader: {
-        backgroundColor: '#5637DD',
+        backgroundColor: '#D3E4D2',
         height: 140,
         alignItems: 'center',
         justifyContent: 'center',
@@ -317,7 +291,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     drawerHeaderText: {
-        color: '#fff',
+        color: 'black',
         fontSize: 24,
         fontWeight: 'bold'
     },
@@ -328,7 +302,7 @@ const styles = StyleSheet.create({
     },
     stackIcon: {
         marginLeft: 10,
-        color: '#fff',
+        color: 'black',
         fontSize: 24
     }
 });
