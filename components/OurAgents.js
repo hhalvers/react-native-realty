@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
         margin: 20
     },
     title: {
-        color: 'red',
+
         backgroundColor: 'black'
     }
 });

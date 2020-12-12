@@ -132,7 +132,7 @@ const AgentNavigator = createStackNavigator(
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                color: '#black'
+                color: 'black'
             },
             headerLeft: <Icon
                 name='user'
