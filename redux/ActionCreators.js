@@ -213,3 +213,8 @@ export const addAgents = ourAgents => ({
     type: ActionTypes.ADD_AGENTS,
     payload: ourAgents
 });
+
+export const deleteFavorite = campsiteId => ({
+    type: ActionTypes.DELETE_FAVORITE,
+    payload: campsiteId
+}); 
