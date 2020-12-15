@@ -200,20 +200,7 @@ const MainNavigator = createDrawerNavigator(
                 )
             }
         },
-        OurAgents: {
-            screen: AgentNavigator,
-            drawerLabel: 'Our Agents',
-            navigationOptions: {
-                drawerIcon: ({tintColor}) => (
-                    <Icon
-                        name='user'
-                        type='font-awesome'
-                        size={24}
-                        color={tintColor}
-                    />
-                )
-            }
-        },
+
       
         Favorites: {
             screen: FavoritesNavigator,
@@ -229,6 +216,20 @@ const MainNavigator = createDrawerNavigator(
                 )
             }
         },    
+        OurAgents: {
+            screen: AgentNavigator,
+            drawerLabel: 'Our Agents',
+            navigationOptions: {
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='user'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
         Contact: {
             screen: ContactNavigator,
             navigationOptions: {
